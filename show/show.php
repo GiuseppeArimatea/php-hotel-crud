@@ -1,25 +1,23 @@
 <?php
+include 'server.php';
 include __DIR__ . '/../partials/header.php';
 ?>
-<!-- stampiamo in view tramite echo i vari campi che ci interessano -->
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <ul>
-            <?php
-            include  'server.php';
-            ?>
-            <li>Id: <?php echo $room['id'] ?></li>
-            <li>Floor: <?php echo $room['floor'] ?></li>
-            <li>Room Number <?php echo $room['room_number'] ?></li>
-            <li>Beds: <?php echo $room['beds'] ?></li>
-          </ul>
-        </div>
+<!-- stampiamo con eco i campi -->
+<!-- room è la varibiale che ci indica la singola stanza -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <h1>Numero stanza: <?php echo $room['room_number'] ?> </h1>
+        <ul>
+          <li>Piano: <?php echo $room['floor'] ?></li>
+          <li>Numero letti: <?php echo $room['beds'] ?></li>
+          <li>Creato il: <?php echo $room['created_at'] ?></li>
+          <li>Aggiornato il: <?php echo $room['updated_at'] ?></li>
+        </ul>
       </div>
     </div>
   </div>
-</body>
+</div>
 
-</html>
+<?php include __DIR__ . '/../partials/footer.php'; ?>

@@ -1,17 +1,26 @@
 <?php
-  include 'database.php';
+  include __DIR__ . '/../database.php';
+  include __DIR__ . '/../functions.php';
 
-  $idRoom = $_GET['id']; // prendiamo l ID tramite GET
-
-  $sql = "SELECT * FROM `stanze` WHERE `id` =  $idRoom"; // selezioniamo tramite il where id = idROOM
-  $result = $conn->query($sql);
-
-  if ($result && $result->num_rows > 0) { // controlli
-    $room = $result->fetch_assoc(); //  assegniamo a room i risultati della variabile result
-  } elseif ($result) {
-    echo 'No results';
-  } else {
-    echo 'Query error';
+  if(empty($_GET['id'])) {
+    die('ID non esistente');
   }
 
-  $conn->close();
+  $roomId = $_GET['id']; // prendiamo l id tramite un get
+
+  $room = getById($conn, 'stanze', $roomId); // richiamo della funzione e come ho gia detto gli passiamo "stanze"
+  // $sql = "SELECT * FROM `stanze` WHERE `id`='$roomId'";
+
+  // $result = $conn->query($sql);
+
+  // if($result && $result->num_rows > 0) {
+  //   $room = $result->fetch_assoc();
+  // }
+  // elseif ($result) {
+  //   echo 'No results';
+  // }
+  // else {
+  //   echo 'Query error';
+  // }
+
+  // $conn->close();
